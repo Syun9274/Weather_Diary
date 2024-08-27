@@ -1,0 +1,7 @@
+###
+POST http://localhost:8080/api/weather/callWeatherAPI
+Content-Type: application/json
+
+{
+  "cityName": "seoul"
+}
