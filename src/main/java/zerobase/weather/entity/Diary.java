@@ -2,7 +2,11 @@ package zerobase.weather.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -11,6 +15,8 @@ import javax.persistence.*;
 @Builder
 @Entity (name = "diary")
 public class Diary extends BaseEntity {
+
+    private LocalDate writeAt;
 
     private String contents;
 

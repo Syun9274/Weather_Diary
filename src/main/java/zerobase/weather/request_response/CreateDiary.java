@@ -1,7 +1,9 @@
-package zerobase.weather.dto;
+package zerobase.weather.request_response;
 
 import com.sun.istack.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -14,6 +16,9 @@ public class CreateDiary {
 
         @NotNull
         private LocalDate writeAt;
+
+        @NotNull
+        private String cityName;
 
         private String contents;
     }
