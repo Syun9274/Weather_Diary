@@ -1,5 +1,6 @@
 package zerobase.weather.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import zerobase.weather.entity.Diary;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DiaryDTO {
 
     private long id;
@@ -26,6 +28,14 @@ public class DiaryDTO {
                 .writeAt(diary.getWriteAt())
                 .contents(diary.getContents())
                 .weatherDTO(WeatherDTO.fromEntity(diary.getWeather()))
+                .build();
+    }
+
+    public static DiaryDTO fromEntityList(Diary diary) {
+        return DiaryDTO.builder()
+                .id(diary.getId())
+                .writeAt(diary.getWriteAt())
+                .contents(diary.getContents())
                 .build();
     }
 }

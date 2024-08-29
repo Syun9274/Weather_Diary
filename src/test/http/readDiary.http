@@ -1,0 +1,6 @@
+GET http://localhost:8080/read/diary
+Content-Type: application/json
+
+{
+  "writeDate": "2024-08-29"
+}
