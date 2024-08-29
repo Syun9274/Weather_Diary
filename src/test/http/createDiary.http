@@ -1,9 +1,0 @@
-// 일기 작성
-POST http://localhost:8080/create/diary
-Content-Type: application/json
-
-{
-  "writeAt": "2024-08-29",
-  "cityName": "tokyo",
-  "contents": "일기 내용 테스트"
-}

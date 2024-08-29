@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zerobase.weather.dto.CallWeather;
+import zerobase.weather.request.CallWeatherRequest;
 import zerobase.weather.dto.WeatherDTO;
 import zerobase.weather.service.WeatherService;
 
@@ -20,7 +20,7 @@ public class WeatherController {
 
     @PostMapping("/callWeatherAPI")
     public ResponseEntity<WeatherDTO> callWeatherAPI(
-            @RequestBody CallWeather.Request request) {
+            @RequestBody CallWeatherRequest request) {
 
         WeatherDTO weatherDTO = weatherService.saveWeather(request.getCityName());
         return ResponseEntity.status(HttpStatus.CREATED).body(weatherDTO);
