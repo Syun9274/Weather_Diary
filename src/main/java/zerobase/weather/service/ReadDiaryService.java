@@ -21,4 +21,12 @@ public class ReadDiaryService {
         List<Diary> diaries = diaryRepository.findByWriteAt(writeDate);
         return ReadDiaryResponse.fromEntityList(diaries);
     }
+
+    @Transactional
+    public ReadDiaryResponse findDiariesByMultiDaya(
+            LocalDate startDate, LocalDate endDate) {
+
+        List<Diary> diaries = diaryRepository.findByWriteAtBetween(startDate, endDate);
+        return ReadDiaryResponse.fromEntityList(diaries);
+    }
 }

@@ -43,4 +43,12 @@ public class DiaryController {
 
         return readDiaryService.findDiariesByDate(request.getWriteDate());
     }
+
+    @GetMapping("/read/diaries")
+    public ReadDiaryResponse readMultipleDayDiary(
+            @RequestBody ReadDiaryRequest.MultiDayRequest request) {
+
+        return readDiaryService.findDiariesByMultiDaya(
+                request.getStartDate(), request.getEndDate());
+    }
 }

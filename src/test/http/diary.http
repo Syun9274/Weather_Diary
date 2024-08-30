@@ -3,7 +3,7 @@ POST http://localhost:8080/create/diary
 Content-Type: application/json
 
 {
-  "writeAt": "2024-08-29",
+  "writeAt": "2024-08-30",
   "cityName": "seoul",
   "contents": "일기 내용 테스트"
 }
@@ -14,4 +14,13 @@ Content-Type: application/json
 
 {
   "writeDate": "2024-08-29"
+}
+
+### 일기 조회
+GET http://localhost:8080/read/diaries
+Content-Type: application/json
+
+{
+  "startDate": "2024-08-29",
+  "endDate": "2024-08-30"
 }
