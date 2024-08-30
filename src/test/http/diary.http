@@ -3,7 +3,7 @@ POST http://localhost:8080/create/diary
 Content-Type: application/json
 
 {
-  "writeAt": "2024-08-30",
+  "writeAt": "2024-08-31",
   "cityName": "seoul",
   "contents": "일기 내용 테스트"
 }
@@ -13,7 +13,7 @@ GET http://localhost:8080/read/diary
 Content-Type: application/json
 
 {
-  "writeDate": "2024-08-29"
+  "writeDate": "2024-08-31"
 }
 
 ### 일기 조회(특정 기간)
@@ -21,8 +21,8 @@ GET http://localhost:8080/read/diaries
 Content-Type: application/json
 
 {
-  "startDate": "2024-08-29",
-  "endDate": "2024-08-30"
+  "startDate": "2024-08-28",
+  "endDate": "2024-08-31"
 }
 
 ### 일기 수정
@@ -30,6 +30,14 @@ PUT http://localhost:8080/update/diary
 Content-Type: application/json
 
 {
-  "writeAt": "2024-08-30",
+  "writeAt": "2024-08-31",
   "contents": "일기 내용 수정 테스트"
+}
+
+###
+DELETE http://localhost:8080/delete/diary
+Content-Type: application/json
+
+{
+  "writeAt": "2024-08-31"
 }

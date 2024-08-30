@@ -27,9 +27,9 @@ public class DiaryDTO {
 
         return DiaryDTO.builder()
                 .id(diary.getId())
+                .contents(diary.getContents())
                 .writeAt(diary.getWriteAt())
                 .updateAt(diary.getUpdateAt())
-                .contents(diary.getContents())
                 .weatherDTO(WeatherDTO.fromEntity(diary.getWeather()))
                 .build();
     }
@@ -37,8 +37,8 @@ public class DiaryDTO {
     public static DiaryDTO fromEntityList(Diary diary) {
         return DiaryDTO.builder()
                 .id(diary.getId())
-                .writeAt(diary.getWriteAt())
                 .contents(diary.getContents())
+                .writeAt(diary.getWriteAt())
                 .build();
     }
 }

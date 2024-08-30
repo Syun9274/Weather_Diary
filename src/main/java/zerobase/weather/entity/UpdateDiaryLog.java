@@ -24,5 +24,4 @@ public class UpdateDiaryLog extends BaseEntity {
     private LocalDateTime updateAt;
 
     private long diaryId;
-
 }

@@ -25,7 +25,6 @@ public class UpdateDiaryLogDTO {
                 .beforeContents(diaryUpdateLog.getBeforeContents())
                 .afterContents(diaryUpdateLog.getAfterContents())
                 .updateAt(diaryUpdateLog.getUpdateAt())
-                .diaryId(diaryUpdateLog.getDiaryId())
                 .build();
     }
 

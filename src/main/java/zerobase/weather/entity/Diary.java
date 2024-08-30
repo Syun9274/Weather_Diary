@@ -19,9 +19,9 @@ public class Diary extends BaseEntity {
 
     private LocalDate writeAt;
 
-    private LocalDateTime updateAt;
-
     private String contents;
+
+    private LocalDateTime updateAt;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "weather_id", nullable = false)

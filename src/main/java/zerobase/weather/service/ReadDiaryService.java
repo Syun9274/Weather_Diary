@@ -17,8 +17,8 @@ public class ReadDiaryService {
     private final DiaryRepository diaryRepository;
 
     @Transactional
-    public ReadDiaryResponse findDiariesByDate(LocalDate writeDate) {
-        List<Diary> diaries = diaryRepository.findByWriteAt(writeDate);
+    public ReadDiaryResponse findDiariesByDate(LocalDate writeAt) {
+        List<Diary> diaries = diaryRepository.findByWriteAt(writeAt);
         return ReadDiaryResponse.fromEntityList(diaries);
     }
 
