@@ -8,7 +8,7 @@ Content-Type: application/json
   "contents": "일기 내용 테스트"
 }
 
-### 일기 조회
+### 일기 조회(특정 날짜)
 GET http://localhost:8080/read/diary
 Content-Type: application/json
 
@@ -16,11 +16,20 @@ Content-Type: application/json
   "writeDate": "2024-08-29"
 }
 
-### 일기 조회
+### 일기 조회(특정 기간)
 GET http://localhost:8080/read/diaries
 Content-Type: application/json
 
 {
   "startDate": "2024-08-29",
   "endDate": "2024-08-30"
+}
+
+### 일기 수정
+PUT http://localhost:8080/update/diary
+Content-Type: application/json
+
+{
+  "writeAt": "2024-08-30",
+  "contents": "일기 내용 수정 테스트"
 }

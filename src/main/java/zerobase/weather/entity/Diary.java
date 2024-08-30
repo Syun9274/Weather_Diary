@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,6 +18,8 @@ import java.time.LocalDate;
 public class Diary extends BaseEntity {
 
     private LocalDate writeAt;
+
+    private LocalDateTime updateAt;
 
     private String contents;
 

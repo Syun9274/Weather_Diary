@@ -23,7 +23,7 @@ public class ReadDiaryService {
     }
 
     @Transactional
-    public ReadDiaryResponse findDiariesByMultiDaya(
+    public ReadDiaryResponse findDiariesByMultiDay(
             LocalDate startDate, LocalDate endDate) {
 
         List<Diary> diaries = diaryRepository.findByWriteAtBetween(startDate, endDate);

@@ -12,8 +12,11 @@ public enum ErrorCode {
     ERROR_API_RESPONSE("API 응답을 받아오는 과정에서 문제가 발생했습니다."),
     PARSE_FAIL_JSON("JSON파일을 파싱하는 과정에서 문제가 발생했습니다."),
 
-    // DiaryException
+    // Weather
     WEATHER_NOT_FOUND("날씨 정보를 찾을 수 없습니다."),
+
+    // Diary
+    DIARY_NOT_FOUND("일기 정보를 찾을 수 없습니다."),
     ERROR("ERROR"),
     ;
 

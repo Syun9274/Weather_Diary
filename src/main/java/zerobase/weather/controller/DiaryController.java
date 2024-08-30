@@ -1,17 +1,17 @@
 package zerobase.weather.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zerobase.weather.dto.DiaryDTO;
 import zerobase.weather.request.CreateDiaryRequest;
 import zerobase.weather.request.ReadDiaryRequest;
+import zerobase.weather.request.UpdateDiaryRequest;
 import zerobase.weather.response.CreateDiaryResponse;
 import zerobase.weather.response.ReadDiaryResponse;
+import zerobase.weather.response.UpdateDiaryResponse;
 import zerobase.weather.service.CreateDiaryService;
 import zerobase.weather.service.ReadDiaryService;
+import zerobase.weather.service.UpdateDiaryService;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +19,7 @@ public class DiaryController {
 
     private final CreateDiaryService createDiaryService;
     private final ReadDiaryService readDiaryService;
+    private final UpdateDiaryService updateDiaryService;
 
     @PostMapping("/create/diary")
     public CreateDiaryResponse createDiary(
@@ -48,7 +49,17 @@ public class DiaryController {
     public ReadDiaryResponse readMultipleDayDiary(
             @RequestBody ReadDiaryRequest.MultiDayRequest request) {
 
-        return readDiaryService.findDiariesByMultiDaya(
+        return readDiaryService.findDiariesByMultiDay(
                 request.getStartDate(), request.getEndDate());
+    }
+
+    @PutMapping("/update/diary")
+    public UpdateDiaryResponse updateDiary(
+            @RequestBody UpdateDiaryRequest request) {
+
+        return UpdateDiaryResponse.from(
+                updateDiaryService.updateDiary(
+                        request.getWriteAt(),
+                        request.getContents()));
     }
 }

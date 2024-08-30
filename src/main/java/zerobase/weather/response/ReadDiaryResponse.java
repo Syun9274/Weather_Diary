@@ -25,5 +25,4 @@ public class ReadDiaryResponse {
         return new ReadDiaryResponse(diaryDTOList);
     }
 
-
 }

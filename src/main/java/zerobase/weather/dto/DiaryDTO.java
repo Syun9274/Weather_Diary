@@ -5,6 +5,7 @@ import lombok.*;
 import zerobase.weather.entity.Diary;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ public class DiaryDTO {
     private long id;
 
     private LocalDate writeAt;
+    private LocalDateTime updateAt;
     private String contents;
 
     private WeatherDTO weatherDTO;
@@ -26,6 +28,7 @@ public class DiaryDTO {
         return DiaryDTO.builder()
                 .id(diary.getId())
                 .writeAt(diary.getWriteAt())
+                .updateAt(diary.getUpdateAt())
                 .contents(diary.getContents())
                 .weatherDTO(WeatherDTO.fromEntity(diary.getWeather()))
                 .build();
