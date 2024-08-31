@@ -1,5 +1,6 @@
 package zerobase.weather.controller;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import zerobase.weather.request.CreateDiaryRequest;
@@ -24,6 +25,8 @@ public class DiaryController {
     private final UpdateDiaryService updateDiaryService;
     private final DeleteDiaryService deleteDiaryService;
 
+    @ApiOperation(value = "일기를 생성하는 API",
+            notes = "일기 작성 날짜, 도시 이름, 일기 내용을 RequestBody로 받습니다.")
     @PostMapping("/create/diary")
     public CreateDiaryResponse createDiary(
             @RequestBody CreateDiaryRequest request) {
@@ -35,6 +38,7 @@ public class DiaryController {
                         request.getContents()));
     }
 
+    @ApiOperation("선택한 날짜에 작성한 일기를 불러오는 API")
     @GetMapping("/read/diary")
     public ReadDiaryResponse readSingleDayDiary(
             @RequestBody ReadDiaryRequest.SingleDayRequest request) {
@@ -42,6 +46,7 @@ public class DiaryController {
         return readDiaryService.findDiariesByDate(request.getWriteDate());
     }
 
+    @ApiOperation("선택한 기간에 작성한 일기를 불러오는 API")
     @GetMapping("/read/diaries")
     public ReadDiaryResponse readMultipleDayDiary(
             @RequestBody ReadDiaryRequest.MultiDayRequest request) {
@@ -50,6 +55,7 @@ public class DiaryController {
                 request.getStartDate(), request.getEndDate());
     }
 
+    @ApiOperation("선택한 날짜에 작성한 첫 번쨰 일기의 내용을 수정하는 API")
     @PutMapping("/update/diary")
     public UpdateDiaryResponse updateDiary(
             @RequestBody UpdateDiaryRequest request) {
@@ -60,6 +66,7 @@ public class DiaryController {
                         request.getContents()));
     }
 
+    @ApiOperation("선택한 날짜에 작성된 모든 일기를 삭제하는 API")
     @DeleteMapping("/delete/diary")
     public DeleteDiaryResponse deleteDiary(
             @RequestBody DeleteDiaryRequest request) {
