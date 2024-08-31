@@ -1,7 +1,10 @@
 package zerobase.weather.service;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import zerobase.weather.WeatherApplication;
 import zerobase.weather.dto.UpdateDiaryLogDTO;
 import zerobase.weather.entity.Diary;
 import zerobase.weather.entity.UpdateDiaryLog;
@@ -22,6 +25,8 @@ public class UpdateDiaryService {
     private final DiaryRepository diaryRepository;
     private final UpdateDiaryLogRepository updateDiaryLogRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(WeatherApplication.class);
+
     @Transactional
     public UpdateDiaryLogDTO updateDiary(LocalDate writeAt, String contents) {
 
@@ -38,6 +43,7 @@ public class UpdateDiaryService {
         diary.setContents(contents);
         diary.setUpdateAt(LocalDateTime.now());
         diaryRepository.save(diary);
+        logger.info("일기 내용 수정이 완료되었습니다.");
 
         return UpdateDiaryLogDTO.fromEntity(updateDiaryLogRepository.save(updateLog));
     }

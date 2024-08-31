@@ -1,7 +1,10 @@
 package zerobase.weather.service;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import zerobase.weather.WeatherApplication;
 import zerobase.weather.entity.Diary;
 import zerobase.weather.repository.DiaryRepository;
 import zerobase.weather.repository.UpdateDiaryLogRepository;
@@ -17,22 +20,20 @@ public class DeleteDiaryService {
     private final DiaryRepository diaryRepository;
     private final UpdateDiaryLogRepository updateDiaryLogRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(WeatherApplication.class);
+
     @Transactional
     public List<Diary> deleteDiary(LocalDate writeAt) {
-        try {
-            // 삭제 로직
-            List<Diary> diariesToDelete = diaryRepository.findByWriteAt(writeAt);
-            for (Diary diary : diariesToDelete) {
-                updateDiaryLogRepository.deleteAllByDiaryId(diary.getId());
-            }
-            diaryRepository.deleteAll(diariesToDelete);
-            return diariesToDelete;
 
-        } catch (Exception e) {
-            // 예외가 발생한 경우 로그 출력
-            System.err.println("Exception occurred: " + e.getMessage());
-            e.printStackTrace(); // stack trace를 콘솔에 출력
-            throw e;  // 예외를 다시 던져서 서버에 알림
+        List<Diary> diariesToDelete = diaryRepository.findByWriteAt(writeAt);
+
+        logger.info("삭제하고자 하는 일기의 수정 기록을 삭제합니다.");
+        for (Diary diary : diariesToDelete) {
+            updateDiaryLogRepository.deleteAllByDiaryId(diary.getId());
         }
+
+        logger.info("일기를 삭제합니다.");
+        diaryRepository.deleteAll(diariesToDelete);
+        return diariesToDelete;
     }
 }

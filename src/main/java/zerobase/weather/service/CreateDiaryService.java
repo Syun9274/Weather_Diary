@@ -1,7 +1,10 @@
 package zerobase.weather.service;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import zerobase.weather.WeatherApplication;
 import zerobase.weather.dto.DiaryDTO;
 import zerobase.weather.dto.WeatherDTO;
 import zerobase.weather.entity.Diary;
@@ -23,12 +26,15 @@ public class CreateDiaryService {
     private final WeatherService weatherService;
     private final WeatherRepository weatherRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(WeatherApplication.class);
+
     @Transactional
     public DiaryDTO saveDiary(LocalDate writeAt, String cityName, String contents) {
 
         Weather weather = weatherRepository.findByCityNameOrderByIdDesc(cityName)
                 .orElseGet(() -> {
-                    // Weather 정보가 없다면
+
+                    logger.info("날씨 정보를 찾을 수 없어 날씨 API를 호출합니다.");
                     WeatherDTO weatherDTO = weatherService.saveWeather(cityName);
 
                     // WeatherDTO에서 새로 생성된 Weather의 ID를 사용해 엔티티 조회
@@ -42,6 +48,7 @@ public class CreateDiaryService {
                 .weather(weather)
                 .build();
 
+        logger.info("새로운 일기를 생성합니다.");
         return DiaryDTO.fromEntity(diaryRepository.save(diary));
     }
 }

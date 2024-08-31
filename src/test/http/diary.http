@@ -8,7 +8,7 @@ Content-Type: application/json
   "contents": "일기 내용 테스트"
 }
 
-### 일기 조회(특정 날짜)
+### 특정 날짜에 작성된 일기 조회
 GET http://localhost:8080/read/diary
 Content-Type: application/json
 
@@ -16,7 +16,7 @@ Content-Type: application/json
   "writeDate": "2024-08-31"
 }
 
-### 일기 조회(특정 기간)
+### 특정 기간동안 작성된 일기 조회
 GET http://localhost:8080/read/diaries
 Content-Type: application/json
 
@@ -34,7 +34,7 @@ Content-Type: application/json
   "contents": "일기 내용 수정 테스트"
 }
 
-###
+### 특정 날짜에 작성된 모든 일기 삭제
 DELETE http://localhost:8080/delete/diary
 Content-Type: application/json
 
