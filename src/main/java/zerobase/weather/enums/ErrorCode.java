@@ -17,6 +17,9 @@ public enum ErrorCode {
 
     // Diary
     DIARY_NOT_FOUND("일기 정보를 찾을 수 없습니다."),
+
+    // GlobalExceptionHandler
+    REQUEST_BODY_ERROR("RequestBody 정보에 문제가 있습니다."),
     ERROR("ERROR"),
     ;
 
